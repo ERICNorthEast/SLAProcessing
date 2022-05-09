@@ -109,13 +109,14 @@ server <- function(input, output) {
         #Fish
         raw_data <- do_data_fixes(raw_data)
 
-        #Set protected flag (EA doesn't need this)
+        #Set protected flag
         # #Not sure prot species is correct - = not "in"
+
         raw_data <- set_protected_flag(raw_data)
 
 
-        # #Sort out designations (EA doesn't need this)
-        raw_data <- fix_designations(raw_data)
+        # #Sort out designations
+        raw_data <- fix_designations(raw_data,TRUE)
 
         # Easting & northing calculations
         raw_data <- E_and_N_calcs(raw_data)
