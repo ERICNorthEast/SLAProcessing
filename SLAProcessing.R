@@ -98,7 +98,7 @@ server <- function(input, output) {
         #Remove GCN licence zero counts
         raw_data <- filter_GCN(raw_data)
 
-        #Merge location columns (EA doesnt need this)
+        #Merge location columns
         raw_data <- merge_location_cols(raw_data)
 
         if (SLA_type!=1) {
@@ -106,7 +106,7 @@ server <- function(input, output) {
           raw_data <-  dplyr::left_join(raw_data,ERICDataProc:::group_LU, by=c("Taxon.grou"="group"))
         }
 
-        #Fish
+        #Update survey names, locations, etc.
         raw_data <- do_data_fixes(raw_data)
 
         #Set protected flag
